@@ -17,7 +17,7 @@ const AddCartHook = (id, item) => {
   const addToCart = async () => {
     if (item.colors.length > 0) {
       if (color === "") {
-        notify("من فضلك اختر لون اولا للمنتج", "warn");
+        notify("Please select a color first for the product.", "warn");
         return;
       }
     }
@@ -40,16 +40,19 @@ const AddCartHook = (id, item) => {
   useEffect(() => {
     if (loading === false) {
       if (res && res.message === "product added successfully") {
-        notify("تمت إضافة المنتج إلى السلة بنجاح", "success");
+        notify(
+          "The product has been successfully added to the cart.",
+          "success"
+        );
         setTimeout(() => {
           window.location.reload(false);
         }, 1000);
       }
       if (res.status === 400) {
-        notify("المنتج موجود في السلة", "warn");
+        notify("The product is in the cart", "warn");
       }
       if (res && res.status === 500) {
-        notify("قم بتسجيل الدخول اولا", "warn");
+        notify("Log in first", "warn");
       }
     }
   }, [loading, res]);

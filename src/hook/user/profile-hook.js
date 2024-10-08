@@ -55,7 +55,7 @@ const ProfileHook = () => {
     if (!loading) {
       if (res && res.data) {
         if (res.status === 200) {
-          notify("تم الحديث بنجاح", "success");
+          notify("Updated successfully", "success");
           const { email, name, phone } = res.data.data;
           const userData = { username: name, phone, email };
           // console.log(userData);
@@ -67,13 +67,13 @@ const ProfileHook = () => {
       }
       if (res.status === 400) {
         if (res.data.errors[0].msg === "E-mail already used") {
-          notify("الإيمايل مستخدم من قبل", "warn");
+          notify("Email already used", "warn");
           setTimeout(() => {
             window.location.reload(false);
           }, 1000);
           return;
         }
-        notify("فشل عملية التحديث", "warn");
+        notify("Update process failed", "warn");
       }
     }
   }, [loading]);

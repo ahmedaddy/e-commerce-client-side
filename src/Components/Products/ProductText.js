@@ -34,7 +34,7 @@ const ProductText = ({ product, category, brand }) => {
       {brand && (
         <Row>
           <Col md="8" className="mt-4">
-            <div className="cat-text d-inline">الماركة :</div>
+            <div className="cat-text d-inline">Brand :</div>
             <div className="barnd-text d-inline mx-1">{brand.name}</div>
           </Col>
         </Row>
@@ -73,7 +73,7 @@ const ProductText = ({ product, category, brand }) => {
       </Row>
 
       <Row className="mt-4">
-        <div className="cat-text">المواصفات :</div>
+        <div className="cat-text">Specifications :</div>
       </Row>
       <Row className="mt-2">
         <Col md="10">
@@ -91,13 +91,15 @@ const ProductText = ({ product, category, brand }) => {
             onClick={
               product.quantity === 0
                 ? () => {
-                    notify("المنتج غير متوفر", "warn");
+                    notify("Product is not available", "warn");
                   }
                 : addToCart
             }
             className="product-cart-add px-3 py-3 d-inline mx-3"
           >
-            {product.quantity === 0 ? "المنتج غير متوفر" : "اضف للعربة"}
+            {product.quantity === 0
+              ? "Product is not available"
+              : "Add to cart"}
           </div>
         </Col>
       </Row>

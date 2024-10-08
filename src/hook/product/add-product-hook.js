@@ -136,19 +136,19 @@ const AddProductHook = () => {
       images.length <= 0 ||
       brandId === ""
     ) {
-      notify("أكمل إدخال كل المعلومات", "warn");
+      notify("Complete entering all information.", "warn");
       return;
     }
     if (title.length < 3) {
-      notify("يجب أن يحتوي العنوان على الأقل على 3 حروف", "warn");
+      notify("Title must contain at least 3 characters.", "warn");
       return;
     }
     if (description.length < 20) {
-      notify("يجب أن يحتوي الوصف على الأقل على 20 حرف", "warn");
+      notify("Description must contain at least 20 characters.", "warn");
       return;
     }
     if (colors.length === 1) {
-      notify("يجب غليك إضافة أكثر من لون", "warn");
+      notify("You should add more than one color.", "warn");
       return;
     }
     // console.log(images[0].file);
@@ -236,12 +236,12 @@ const AddProductHook = () => {
         }, 2000);
 
         if (res.status === 201) {
-          notify("تم الاضافة بنجاح", "success");
+          notify("Added successfully", "success");
           setTimeout(() => {
             window.location.reload(false);
           }, 1000);
         } else {
-          notify("هناك مشكله", "error");
+          notify("There is a problem", "error");
         }
       }
     }

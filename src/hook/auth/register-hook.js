@@ -34,23 +34,26 @@ const RegisterHook = () => {
 
   const validationValues = () => {
     if (name === "") {
-      notify("من فضلك ادخل اسم المستخدم", "error");
+      notify("Please enter your username.", "error");
       return;
     }
     if (phone.length < 10) {
-      notify("من فضلك ادخل رقم هاتف صحيح", "error");
+      notify("Please enter a valid phone number.", "error");
       return;
     }
     if (email === "") {
-      notify("من فضلك تاكيد الايمايل", "error");
+      notify("Please confirm your email.", "error");
       return;
     }
     if (password !== confirmPassword || password === "") {
-      notify("من فضلك تاكيد من كلمه السر", "error");
+      notify("Please confirm your password.", "error");
       return;
     }
     if (password.length < 6) {
-      notify("يجب ان لاتقل كلمه السر عن 6 احرف او ارقام", "error");
+      notify(
+        "The password must not be less than 6 letters or numbers.",
+        "error"
+      );
       return;
     }
     return true;
@@ -69,7 +72,7 @@ const RegisterHook = () => {
       signUp({ name, email, password, passwordConfirm: confirmPassword, phone })
     );
     setLoading(false);
-    notify("hello");
+    notify("Hello");
   };
 
   const res = useSelector((state) => state.authReducer.register);
@@ -83,7 +86,7 @@ const RegisterHook = () => {
         if (res.token) {
           localStorage.setItem("token", res.token);
           localStorage.setItem("user", JSON.stringify(res.data));
-          notify("تم تسجيل الحساب بنجاح", "success");
+          notify("Account registered successfully", "success");
           setTimeout(() => {
             window.location.href = "/";
           }, 2000);
@@ -91,11 +94,14 @@ const RegisterHook = () => {
 
         if (res.data && res.data.errors) {
           if (res.data.errors[0].msg === "E-mail already used")
-            notify("هذا الايميل مسجل من قبل", "error");
+            notify("This email is already registered.", "error");
         }
         if (res.data.errors) {
           if (res.data.errors[0].msg === "accept only morrocan phone numbers")
-            notify("يجب ان يكون الرقم مغربي مكون من 10 رقم", "error");
+            notify(
+              "The number must be Moroccan, consisting of 10 digits.",
+              "error"
+            );
         }
       }
     }

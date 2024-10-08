@@ -28,7 +28,7 @@ const DeleteUserCartItem = (item) => {
   useEffect(() => {
     if (loading === false) {
       if (res.status === "success") {
-        notify("تم الحذف بنجاح", "success");
+        notify("Deleted successfully", "success");
         setTimeout(() => {
           window.location.reload(false);
         }, 1000);
@@ -52,7 +52,7 @@ const DeleteUserCartItem = (item) => {
         quantity: quantity,
       })
     );
-    notify("لقد تم تغيير كمية منتجك بنجاح", "success");
+    notify("Your product quantity has been successfully changed.", "success");
     setTimeout(() => {
       window.location.reload(false);
     }, 1000);

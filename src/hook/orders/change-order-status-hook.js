@@ -27,7 +27,8 @@ const ChangeOrderStatusHook = (id) => {
       await dispatch(changeOrderToDelivery(id));
       setLoading(false);
     } else if (delivery === "0") {
-      notify("من فضلك اختر قيمة", "warn");
+      notify("Please select a value", "warn");
+      return;
     }
   };
   const changePay = async () => {
@@ -36,7 +37,8 @@ const ChangeOrderStatusHook = (id) => {
       await dispatch(changeOrderToPay(id));
       setLoading(false);
     } else if (delivery === "0") {
-      notify("من فضلك اختر قيمة", "warn");
+      notify("Please select a value", "warn");
+      return;
     }
   };
 
@@ -46,7 +48,7 @@ const ChangeOrderStatusHook = (id) => {
   useEffect(() => {
     if (!loading) {
       if (deliveryRes && deliveryRes.status === 201) {
-        notify("تم تغير حالة التوصيل بنجاح", "success");
+        notify("Delivery status changed successfully.", "success");
         setTimeout(() => {
           window.location.reload(false);
         }, 1000);
@@ -57,7 +59,7 @@ const ChangeOrderStatusHook = (id) => {
     if (!loading) {
       if (payRes && payRes.status === 201) {
         // console.log(payRes);
-        notify("تم تغير حالة الدفع بنجاح", "success");
+        notify("Payment status changed successfully", "success");
         setTimeout(() => {
           window.location.reload(false);
         }, 1000);

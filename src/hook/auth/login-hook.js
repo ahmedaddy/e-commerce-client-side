@@ -39,7 +39,7 @@ const LoginHook = () => {
       if (res.token) {
         localStorage.setItem("token", res.token);
         localStorage.setItem("user", JSON.stringify(res.data));
-        notify("تم تسجيل الدخول بنجاح", "success");
+        notify("You have successfully logged in.", "success");
         setTimeout(() => {
           window.location.href = "/";
         }, 1000);
@@ -52,7 +52,7 @@ const LoginHook = () => {
         console.log(res.data.message);
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        notify("كلمة السر او الايميل خطا", "error");
+        notify("Incorrect password or email", "error");
       }
       setLoading(true);
     }

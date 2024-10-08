@@ -26,7 +26,7 @@ const AddBrandHook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name === "" || img === null) {
-      notify("من فضلك أدخل البيانات", "warn");
+      notify("Please enter data", "warn");
       return;
     }
     const formData = new FormData();
@@ -51,9 +51,9 @@ const AddBrandHook = () => {
 
       if (res) {
         if (res.status === 201) {
-          notify("تمت عملية الاضافة بنجاح", "success");
+          notify("The addition process was completed successfully.", "success");
         } else {
-          notify("هناك مشكله فى عملية الاضافة", "error");
+          notify("There is a problem with the addition process.", "error");
         }
         // console.log(res);
       }

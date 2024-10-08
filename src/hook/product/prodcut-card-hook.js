@@ -54,12 +54,15 @@ const ProdcutCardHook = (item, favProd = []) => {
       if (resDelete) {
         // console.log(resDelete);
         if (resDelete && resDelete.status === "success") {
-          notify("تم حذف المنتج من المفضلات بنجاح", "success");
+          notify(
+            "The product has been removed from your favorites successfully.",
+            "success"
+          );
           setTimeout(() => {
             window.location.reload(false);
           }, 1500);
         } else if (resAdd && resAdd.status === 500) {
-          notify("انت غير مسجل", "error");
+          notify("You are not registered", "error");
           // setTimeout(() => {
           //   window.location.reload(false);
           // }, 1500);
@@ -71,12 +74,15 @@ const ProdcutCardHook = (item, favProd = []) => {
   useEffect(() => {
     if (!loading.add) {
       if (resAdd && resAdd.status === "success") {
-        notify("تمت اضافة المنتج للمفضلة بنجاح", "success");
+        notify(
+          "The product has been successfully added to favourites.",
+          "success"
+        );
         setTimeout(() => {
           window.location.reload(false);
         }, 1500);
       } else if (resAdd && resAdd.status === 500) {
-        notify("انت غير مسجل", "error");
+        notify("You are not registered.", "error");
         // setTimeout(() => {
         //   window.location.reload(false);
         // }, 1500);

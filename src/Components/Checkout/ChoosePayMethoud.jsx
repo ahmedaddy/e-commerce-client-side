@@ -40,15 +40,15 @@ const ChoosePayMethoud = () => {
     } else if (type === "CARD") {
       handleCreateOrderCard();
     } else {
-      notify("من فضلك اختر طريقة للدفع أولا", "warn");
+      notify("Please choose a payment method first.", "warn");
       return;
     }
     if (addressDetail === "") {
-      notify("من فضلك أكتب عنوان", "warn");
+      notify("Please write the address", "warn");
       return;
     }
     if (phone === "") {
-      notify("من فضلك أكتب رقم هاتفك", "warn");
+      notify("Please enter your phone number", "warn");
       return;
     }
   };
@@ -77,7 +77,7 @@ const ChoosePayMethoud = () => {
               className="mt-2"
             />
             <label className="mx-2" for="group1">
-              الدفع عن طريق البطاقه الائتمانية
+              Payment by credit card
             </label>
           </Col>
         </Row>
@@ -93,7 +93,7 @@ const ChoosePayMethoud = () => {
               className="mt-2"
             />
             <label className="mx-2" for="group1">
-              الدفع عند الاستلام
+              Cash on delivery
             </label>
           </Col>
         </Row>
@@ -126,7 +126,7 @@ const ChoosePayMethoud = () => {
         </Col>
         <Col xs="12" className="d-flex justify-content-end">
           <div className="product-price d-inline   border">
-            درهم
+            Dirham
             {totalCartPriceAfterDiscount
               ? totalCartPriceAfterDiscount
               : totalCartPrice}
@@ -135,7 +135,7 @@ const ChoosePayMethoud = () => {
             onClick={handlePay}
             className="product-cart-add px-3 pt-2 d-inline me-2"
           >
-            اتمام الشراء
+            Complete the purchase
           </div>
         </Col>
       </Row>

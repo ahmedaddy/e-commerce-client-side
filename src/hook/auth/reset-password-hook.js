@@ -18,11 +18,11 @@ const ResetPasswordHook = () => {
 
   const onSubmit = async () => {
     if (password === "") {
-      notify("من فضلك ادخل كلمة السر", "error");
+      notify("Please enter your password.", "error");
       return;
     }
     if (password !== confirmPassword) {
-      notify("كلمة السر غير متطابقه مع تاكيد كلمة السر", "error");
+      notify("Password does not match Confirm password", "error");
       return;
     }
     const email = localStorage.getItem("user-email");
@@ -44,13 +44,13 @@ const ResetPasswordHook = () => {
         // console.log(res.data.status);
         // console.log(res.statusText);
         if (res.status && res.status === 200) {
-          notify("تم تغير كلمة السر بنجاح", "success");
+          notify("Password has been changed successfully.", "success");
           localStorage.removeItem("user-email");
           setTimeout(() => {
             window.location.href = "/login";
           }, 1500);
         } else if (res.data.status === "fail") {
-          notify("من فضلك اطلب كود جديد", "error");
+          notify("Please request a new code.", "error");
         }
       }
     }

@@ -28,19 +28,19 @@ const ChangeUserPasswordHook = () => {
 
   const changePassword = async () => {
     if (currentPassword === "") {
-      notify("المرجوا إدخال كلمة المرور القديمة", "warn");
+      notify("Please enter your old password.", "warn");
       return;
     }
     if (password === "") {
-      notify("المرجوا إدخال كلمة المرور جديدة", "warn");
+      notify("Please enter a new password.", "warn");
       return;
     }
     if (confirmPassword === "") {
-      notify("المرجوا إعادة إدخال كلمة المرور الجديدة", "warn");
+      notify("Please re-enter your new password.", "warn");
       return;
     }
     if (confirmPassword != password) {
-      notify("تاكيد كلمة المرور غير متطابق", "warn");
+      notify("Confirm password does not match.", "warn");
       return;
     }
     setLoading(true);
@@ -59,10 +59,10 @@ const ChangeUserPasswordHook = () => {
       if (res) {
         console.log(res);
         if (res.status && res.status === 401)
-          notify("قم بتسجيل الدخول مرة أخرى", "warn");
+          notify("Log in again", "warn");
       }
       if (res.token) {
-        notify("تم تغيير كلمة المرور بنجاح", "success");
+        notify("Password changed successfully", "success");
       }
     }
   }, [loading]);

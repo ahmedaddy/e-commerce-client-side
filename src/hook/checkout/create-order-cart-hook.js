@@ -10,7 +10,7 @@ export default function CreateOrderCartHook() {
   // console.log(cartId);
   const handleCreateOrderCard = async (addressDetail, phone) => {
     if (cartId === "0") {
-      notify("من فضلك اضف منتجات الى العربه اولا", "warn");
+      notify("Please add products to the cart first.", "warn");
       return;
     }
 
@@ -38,7 +38,7 @@ export default function CreateOrderCartHook() {
         }
         // console.log(res);
       } else {
-        notify("فشل فى اكمال الطلب من فضلك حاول مره اخرى", "warn");
+        notify("Failed to complete the request, please try again.", "warn");
       }
     }
   }, [loading]);

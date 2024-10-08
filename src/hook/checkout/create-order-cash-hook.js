@@ -15,7 +15,7 @@ export default function CreateOrderCashHook(addressDetail, phone) {
 
   const handleCreateOrderCash = async () => {
     if (cartId === "0") {
-      notify("من فضلك اضف منتجات الى العربه اولا", "warn");
+      notify("Please add products to the cart first.", "warn");
       return;
     }
     setLoading(true);
@@ -36,12 +36,12 @@ export default function CreateOrderCashHook(addressDetail, phone) {
   useEffect(() => {
     if (!loading) {
       if (res && res.status === "success") {
-        notify("تم انشاء طلبك بنجاح", "success");
+        notify("Your request has been created successfully.", "success");
         setTimeout(() => {
           navigate("/user/allorders");
         }, 1500);
       } else {
-        notify("فشل فى اكمال الطلب من فضلك حاول مره اخرى", "warn");
+        notify("Failed to complete the request, please try again.", "warn");
       }
 
       // console.log(res);

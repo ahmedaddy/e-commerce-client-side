@@ -29,7 +29,7 @@ const AddCategoryHook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name === "" || setSelectedFile === null) {
-      notify("من فضلك أدخل البيانات", "warn");
+      notify("Please enter data", "warn");
       return;
     }
     const formData = new FormData();
@@ -56,9 +56,9 @@ const AddCategoryHook = () => {
       if (res) {
         // console.log(res);
         if (res.status === 201) {
-          notify("تمت عملية الاضافة بنجاح", "success");
+          notify("The addition process was completed successfully.", "success");
         } else {
-          notify("هناك مشكله فى عملية الاضافة", "error");
+          notify("There is a problem with the addition process.", "error");
         }
       }
     }

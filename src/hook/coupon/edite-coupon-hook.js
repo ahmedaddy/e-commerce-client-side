@@ -48,10 +48,10 @@ export default function EditCouponHook(id) {
 
   const onSubmit = async () => {
     if (name === "" && date === "" && discount === "") {
-      notify("المرجو إدخال كل المعلومات", "warn");
+      notify("Please enter all information.", "warn");
     }
     if (discount > 100) {
-      notify("الحد الأعلى للخصم هو 100%", "warn");
+      notify("The maximum discount is 100%", "warn");
       return;
     }
     setLoading(true);
@@ -71,7 +71,7 @@ export default function EditCouponHook(id) {
     if (!loading) {
       if (resCoupon) {
         if (resCoupon.data) {
-          notify("تم تحديث كود الخصم بنجاح", "success");
+          notify("Discount code updated successfully.", "success");
           setTimeout(() => {
             window.location.reload(false);
           }, 1000);

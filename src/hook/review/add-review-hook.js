@@ -24,11 +24,11 @@ const AddReviewHook = (id) => {
 
   const onSubmit = async () => {
     if (rateValue < 1) {
-      notify("من فضلك أضف تقييم", "warn");
+      notify("Please add a rating.", "warn");
       return;
     }
     if (title === "") {
-      notify("من فضلك اكتب تعليق", "warn");
+      notify("Please write a comment", "warn");
       return;
     }
     setLoading(true);
@@ -50,20 +50,20 @@ const AddReviewHook = (id) => {
       if (res) {
         // console.log(res);
         if (res.status && res.status === 403) {
-          notify("غير مسموح للادمن بالتقييم", "warn");
+          notify("Admin is not allowed to rate.", "warn");
         }
         if (
           res.data &&
           res.data.errors &&
           res.data.errors[0].msg === "you Already Created a review before"
         ) {
-          notify("لقد قمت بالفعل بإضافة تقييم على هذا المنتج", "error");
+          notify("you Already Created a review before", "error");
           setTimeout(() => {
             window.location.reload(false);
           }, 1000);
         }
         if (res.data && res.data.title) {
-          notify("تمت اضافة التقييم بنجاح", "success");
+          notify("The rating has been added successfully.", "success");
           setTimeout(() => {
             window.location.reload(false);
           }, 1000);

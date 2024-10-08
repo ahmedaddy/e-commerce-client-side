@@ -236,7 +236,7 @@ const EditProductsHook = (id) => {
       price <= 0 ||
       brandId === ""
     ) {
-      notify("أكمل إدخال كل المعلومات", "warn");
+      notify("Complete entering all information.", "warn");
       return;
     }
 
@@ -335,12 +335,12 @@ const EditProductsHook = (id) => {
       }, 2000);
 
       if (productRes && productRes.status === 200) {
-        notify("تم التعديل بنجاح", "success");
+        notify("Modified successfully", "success");
         setTimeout(() => {
           window.location.reload(false);
         }, 1000);
       } else {
-        notify("هناك مشكله", "error");
+        notify("There is a problem", "error");
         // setTimeout(() => {
         //   window.location.reload(false);
         // }, 1000);

@@ -13,7 +13,7 @@ const VerifyPasswordHook = () => {
   };
   const onSubmit = async () => {
     if (email == "") {
-      notify("من فضلك ادخل الايميل", "error");
+      notify("Please enter your email", "error");
       return;
     }
     setLoading(true);
@@ -29,13 +29,16 @@ const VerifyPasswordHook = () => {
       if (res) {
         console.log(res);
         if (res.status === "success") {
-          notify("تم ارسال الكود للايميل بنجاح", "success");
+          notify(
+            "The code has been sent to your email successfully.",
+            "success"
+          );
           setTimeout(() => {
             window.location.href = "/user/verify-code";
           }, 1000);
         }
         if (res.status === "fail") {
-          notify("هذا الحساب غير موجود لدينا", "error");
+          notify("This account does not exist with us", "error");
         }
       }
     }

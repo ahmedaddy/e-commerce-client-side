@@ -8,7 +8,7 @@ const AddSubCategoryHook = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if (!navigator.onLine) {
-      notify("هناك مشكله فى الاتصال بالانترنت", "warn");
+      notify("There is a problem with the internet connection.", "warn");
       return;
     }
     dispatch(getAllCategory());
@@ -30,15 +30,15 @@ const AddSubCategoryHook = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!navigator.onLine) {
-      notify("هناك مشكله فى الاتصال بالانترنت", "warn");
+      notify("There is a problem with the internet connection.", "warn");
       return;
     }
     if (name === "") {
-      notify("من فضلك ادخل اسم التصنيف", "warn");
+      notify("Please enter the category name.", "warn");
       return;
     }
     if (id === "0") {
-      notify("من فضلك اختر تصنيف رئيسي", "warn");
+      notify("Please select a main category.", "warn");
       return;
     }
     setLoading(true);
@@ -58,13 +58,13 @@ const AddSubCategoryHook = () => {
         setID("0");
         setName("");
         if (subcategory.data) {
-          notify("تم إنشاء التصنيف الفرعي بنجاح", "success");
+          notify("Subcategory created successfully", "success");
         }
         if (
           subcategory ===
           "error AxiosError: Request failed with status code 500"
         ) {
-          notify("هذا الاسم مكرر من فضلك اختر اسم اخر", "warn");
+          notify("This name is duplicate, please choose another name", "warn");
         }
         setLoading(true);
       }
