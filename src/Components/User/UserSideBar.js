@@ -18,28 +18,28 @@ const UserSideBar = () => {
             className="admin-side-text mt-3 border-bottom p-2 mx-auto text-center"
             style={{ cursor: "pointer", textDecoration: "none" }}
           >
-            اداره الطلبات
+            Manage Orders
           </div>
           <div
             onClick={() => handleLinkClick("/user/favoriteproducts")}
             className="admin-side-text my-1 border-bottom p-2 mx-auto text-center"
             style={{ cursor: "pointer", textDecoration: "none" }}
           >
-            المنتجات المفضلة
+            Favorite Products
           </div>
-          <div
+          {/* <div
             onClick={() => handleLinkClick("/user/addresses")}
             className="admin-side-text my-1 border-bottom p-2 mx-auto text-center"
             style={{ cursor: "pointer", textDecoration: "none" }}
           >
-            العنوانين الشخصية
-          </div>
+            Personal Addresses
+          </div> */}
           <div
             onClick={() => handleLinkClick("/user/profile")}
             className="admin-side-text my-1 border-bottom p-2 mx-auto text-center"
             style={{ cursor: "pointer", textDecoration: "none" }}
           >
-            الملف الشخصي
+            User Profile
           </div>
         </div>
       </div>

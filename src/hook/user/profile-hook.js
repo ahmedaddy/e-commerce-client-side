@@ -85,7 +85,6 @@ const ProfileHook = () => {
     onChangeName,
     onChangeEmail,
     onChangePhone,
-    loading,
     show,
     handleClose,
     handleShow,

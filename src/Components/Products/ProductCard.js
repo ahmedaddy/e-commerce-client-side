@@ -96,7 +96,7 @@ const ProductCard = ({ item, favProd }) => {
               <div className="d-flex">
                 <div className="card-old-price">{item.priceAfterDescount}</div>
                 <div className="card-price">{item.price}</div>
-                <div className="card-currency mx-1">درهم</div>
+                <div className="card-currency mx-1">Dirham</div>
               </div>
             </div>
           </Card.Text>

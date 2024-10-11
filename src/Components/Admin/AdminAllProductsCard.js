@@ -24,11 +24,13 @@ const AdminAllProductsCard = ({ item }) => {
         <Modal.Header>
           <Modal.Title>
             {" "}
-            <div className="font">تاكيد الحذف</div>
+            <div className="font">Confirm deletion</div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="font">هل انتا متاكد من عملية الحذف للمنتج</div>
+          <div className="font">
+            Are you sure about the product deletion process?
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -36,14 +38,14 @@ const AdminAllProductsCard = ({ item }) => {
             variant="success"
             onClick={handleClose}
           >
-            تراجع
+            No
           </Button>
           <Button
             className="font text-dark"
             variant="dark"
             onClick={handelDelete}
           >
-            حذف
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>
@@ -61,13 +63,13 @@ const AdminAllProductsCard = ({ item }) => {
         <Row className="d-flex justify-content-center px-2">
           <Col className=" d-flex justify-content-between">
             <div onClick={handleShow} className="d-inline item-delete-edit">
-              ازاله
+              Delete
             </div>
             <Link
               to={`/admin/editproduct/${item._id}`}
               style={{ textDecoration: "none" }}
             >
-              <div className="d-inline item-delete-edit">تعديل</div>
+              <div className="d-inline item-delete-edit">Edite</div>
             </Link>{" "}
           </Col>
         </Row>
@@ -101,7 +103,7 @@ const AdminAllProductsCard = ({ item }) => {
               <div className="d-flex justify-content-between">
                 <div className="card-rate">{item.ratingsQuantity}</div>
                 <div className="d-flex">
-                  <div className="card-currency mx-1">درهم</div>
+                  <div className="card-currency mx-1">Dirham</div>
                   <div className="card-price">{item.price}</div>
                 </div>
               </div>

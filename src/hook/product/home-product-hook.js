@@ -22,7 +22,7 @@ const useHomeProduct = () => {
     (state) => state.allProducts?.productContainer2
   );
   const loading = useSelector((state) => state.allProducts?.loading);
-  console.log(products2);
+  // console.log(products2);
   return [products1, products2, loading];
 };
 

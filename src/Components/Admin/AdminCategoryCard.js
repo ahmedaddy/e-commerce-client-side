@@ -13,11 +13,13 @@ const AdminCategoryCard = ({ category }) => {
         <Modal.Header>
           <Modal.Title>
             {" "}
-            <div className="font">تاكيد الحذف</div>
+            <div className="font">Confirm deletion</div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="font">هل انتا متاكد من عملية الحذف للتصنيف</div>
+          <div className="font">
+            Are you sure about the deletion process for the Category?
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -25,14 +27,14 @@ const AdminCategoryCard = ({ category }) => {
             variant="success"
             onClick={handleClose}
           >
-            تراجع
+            No
           </Button>
           <Button
             className="font bg-danger btn btn-danger"
             variant="dark"
             onClick={handelDelete}
           >
-            حذف
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>
@@ -67,7 +69,7 @@ const AdminCategoryCard = ({ category }) => {
                 height="17px"
                 width="15px"
               />
-              <p className="item-delete-edit"> ازاله</p>
+              <p className="item-delete-edit">Delete</p>
             </div>
           </div>
         </Col>

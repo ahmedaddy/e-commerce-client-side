@@ -22,12 +22,12 @@ const RegisterPage = () => {
   return (
     <Container style={{ minHeight: "680px" }}>
       <Row className="py-5 d-flex justify-content-center hieght-search">
-        <Col sm="12" className="d-flex flex-column ">
-          <label className="mx-auto title-login">تسجيل حساب جديد</label>
+        <Col sm="12" className="d-flex flex-column">
+          <label className="mx-auto title-login">Create a New Account</label>
           <input
             value={name}
             onChange={onChangeName}
-            placeholder="اسم المستخدم..."
+            placeholder="Username..."
             type="text"
             className="user-input mt-3 text-center mx-auto"
           />
@@ -35,39 +35,39 @@ const RegisterPage = () => {
             value={phone}
             onChange={onChangePhone}
             maxLength={10}
-            placeholder="رقم الهاتف ..."
+            placeholder="Phone number..."
             type="text"
             className="user-input mt-3 text-center mx-auto"
           />
           <input
             value={email}
             onChange={onChangeEmail}
-            placeholder="الايميل..."
+            placeholder="Email..."
             type="text"
             className="user-input my-3 text-center mx-auto"
           />
           <input
             value={password}
             onChange={onChangePassword}
-            placeholder="كلمه السر..."
+            placeholder="Password..."
             type="password"
             className="user-input my-3 text-center mx-auto"
           />
           <input
             value={confirmPassword}
             onChange={onChangeConfirmPassword}
-            placeholder="تأكيد كلمة السر ..."
+            placeholder="Confirm Password..."
             type="password"
             className="user-input text-center mx-auto"
           />
           <button onClick={onSubmit} className="btn-login mx-auto mt-4">
-            تسجيل الحساب
+            Register Account
           </button>
           <label className="mx-auto my-4">
-            لديك حساب بالفعل؟{" "}
+            Already have an account?{" "}
             <Link to="/login" style={{ textDecoration: "none" }}>
               <span style={{ cursor: "pointer" }} className="text-danger">
-                اضغط هنا
+                Click here
               </span>
             </Link>
           </label>

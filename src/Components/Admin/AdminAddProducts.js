@@ -8,14 +8,9 @@ import AddProductHook from "../../hook/product/add-product-hook";
 import { CompactPicker } from "react-color";
 import { ToastContainer } from "react-toastify";
 
-import MultiImageInput from "react-multiple-image-input";
-
 import ImageUploading from "react-images-uploading";
 
 const AdminAddProducts = () => {
-  // const onSelect = () => {};
-  // const onRemove = () => {};
-
   const [
     category,
     brand,
@@ -29,19 +24,19 @@ const AdminAddProducts = () => {
     catId,
     qty,
     brandId,
-    seletedSubId,
+    selectedSubId,
     loading,
     onChangeTitle,
     onChangeDescription,
     onChangePrice,
     onChangePriceAfterDiscount,
     onChangeQuantity,
-    handelChangeComplete,
+    handleChangeComplete,
     onSelect,
     onRemove,
-    onSeletCategory,
+    onSelectCategory,
     subCatOptions,
-    onSeletBrand,
+    onSelectBrand,
     onChangeColor,
     showColor,
     colors,
@@ -50,10 +45,10 @@ const AdminAddProducts = () => {
 
   return (
     <div>
-      <Row className="justify-content-start ">
-        <div className="admin-content-text pb-4"> اضافه منتج جديد</div>
+      <Row className="justify-content-start">
+        <div className="admin-content-text pb-4">Add a New Product</div>
         <Col sm="8">
-          <div className="text-form pb-2"> صور للمنتج</div>
+          <div className="text-form pb-2">Product Images</div>
           <ImageUploading
             multiple
             value={images}
@@ -70,11 +65,9 @@ const AdminAddProducts = () => {
               isDragging,
               dragProps,
             }) => (
-              // write your building UI
               <div className="upload__image-wrapper">
                 <button
                   className="btn btn-success"
-                  // style={isDragging ? { color: "red" } : undefined}
                   onClick={onImageUpload}
                   {...dragProps}
                 >
@@ -88,7 +81,7 @@ const AdminAddProducts = () => {
                   {imageList.map((image, index) => (
                     <Col sm="3" key={index} className="image-item">
                       <img src={image["data_url"]} alt="" width="100" />
-                      <div className="image-item__btn-wrapper ">
+                      <div className="image-item__btn-wrapper">
                         <button
                           className="btn btn-primary w-100 my-2"
                           onClick={() => onImageUpdate(index)}
@@ -108,20 +101,13 @@ const AdminAddProducts = () => {
               </div>
             )}
           </ImageUploading>
-          {/* <MultiImageInput
-            images={images}
-            setImages={setImages}
-            theme={"light"}
-            allowCrop={false}
-            max={4}
-          /> */}
-          {/* <img src={avatar} alt="" height="100px" width="120px" /> */}
+
           <input
             value={title}
             onChange={onChangeTitle}
             type="text"
             className="input-form d-block mt-3 px-3"
-            placeholder="اسم المنتج"
+            placeholder="Product Name"
           />
           <textarea
             value={description}
@@ -129,36 +115,36 @@ const AdminAddProducts = () => {
             className="input-form-area p-2 mt-3"
             rows="4"
             cols="50"
-            placeholder="وصف المنتج"
+            placeholder="Product Description"
           />
           <input
             value={price}
             onChange={onChangePrice}
             type="number"
             className="input-form d-block mt-3 px-3"
-            placeholder="السعر قبل الخصم"
+            placeholder="Price Before Discount"
           />
           <input
             value={priceAfterDiscount}
             onChange={onChangePriceAfterDiscount}
             type="number"
             className="input-form d-block mt-3 px-3"
-            placeholder="سعر الحالي للمنتج"
+            placeholder="Current Product Price"
           />
           <input
             type="number"
             className="input-form d-block mt-3 px-3"
-            placeholder="الكمية المتاحة"
+            placeholder="Available Quantity"
             value={qty}
             onChange={onChangeQuantity}
           />
           <select
-            onChange={onSeletCategory}
+            onChange={onSelectCategory}
             name="languages"
             id="lang"
-            className="select input-form-area mt-3 px-2 "
+            className="select input-form-area mt-3 px-2"
           >
-            <option value="val">التصنيف الرئيسي</option>
+            <option value="val">Main Category</option>
             {category.data &&
               category.data.map((item, index) => {
                 return (
@@ -171,7 +157,7 @@ const AdminAddProducts = () => {
 
           <Multiselect
             className="mt-2 text-end"
-            placeholder="التصنيف الفرعي"
+            placeholder="Subcategory"
             options={subCatOptions}
             onSelect={onSelect}
             onRemove={onRemove}
@@ -180,11 +166,11 @@ const AdminAddProducts = () => {
           />
           <select
             name="brand"
-            onChange={onSeletBrand}
+            onChange={onSelectBrand}
             id="brand"
-            className="select input-form-area mt-3 px-2 "
+            className="select input-form-area mt-3 px-2"
           >
-            <option value="val">الماركة</option>
+            <option value="val">Brand</option>
             {brand.data &&
               brand.data.map((item, index) => {
                 return (
@@ -195,30 +181,18 @@ const AdminAddProducts = () => {
               })}
           </select>
 
-          <div className="text-form mt-3 "> الالوان المتاحه للمنتج</div>
+          <div className="text-form mt-3">Available Colors</div>
           <div className="mt-1 d-flex">
             {colors.length > 0 &&
               colors.map((color, index) => {
                 return (
                   <div
                     key={index}
-                    className="color ms-2 border  mt-1"
+                    className="color ms-2 border mt-1"
                     style={{ backgroundColor: color }}
                   ></div>
                 );
               })}
-            {/* <div
-              className="color ms-2 border  mt-1"
-              style={{ backgroundColor: "#E52C2C" }}
-            ></div>
-            <div
-              className="color ms-2 border mt-1 "
-              style={{ backgroundColor: "white" }}
-            ></div>
-            <div
-              className="color ms-2 border  mt-1"
-              style={{ backgroundColor: "black" }}
-            ></div> */}
             <img
               onClick={onChangeColor}
               src={add}
@@ -228,15 +202,15 @@ const AdminAddProducts = () => {
               style={{ cursor: "pointer" }}
             />
             {showColor === true && (
-              <CompactPicker onChangeComplete={handelChangeComplete} />
+              <CompactPicker onChangeComplete={handleChangeComplete} />
             )}
           </div>
         </Col>
       </Row>
       <Row>
-        <Col sm="8" className="d-flex justify-content-end ">
-          <button onClick={onSubmit} className="btn-save d-inline mt-2 ">
-            حفظ التعديلات
+        <Col sm="8" className="d-flex justify-content-end">
+          <button onClick={onSubmit} className="btn-save d-inline mt-2">
+            Save Changes
           </button>
         </Col>
       </Row>

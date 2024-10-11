@@ -473,6 +473,7 @@ a {
   width: 375px;
   border: 1px solid #979797;
   border-radius: 8px;
+  padding: 8px;
 }
 
 .title-login {
@@ -511,7 +512,7 @@ a {
   font-weight: 800;
   letter-spacing: 0;
   line-height: 28px;
-  text-align: right;
+  /* text-align: right; */
 }
 .cart-item-body {
   /* height: 229px; */
@@ -594,7 +595,7 @@ a {
   font-weight: 800;
   letter-spacing: 0;
   line-height: 28px;
-  text-align: right;
+  /* text-align: right; */
 }
 .item-delete-edit {
   color: #979797;

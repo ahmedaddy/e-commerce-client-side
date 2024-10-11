@@ -10,15 +10,19 @@ import { ToastContainer } from "react-toastify";
 const AdminOrderDetalis = () => {
   const { id } = useParams();
   const [orderData, cartItems, loading] = GetOneOrderHook(id);
-  // console.log(cartItems);
-  //   console.log(cartItems);
+
+  // console.log(orderData);
 
   const [delivery, pay, handleDelevery, handlePay, changeDelivery, changePay] =
     ChangeOrderStatusHook(id);
 
   return (
     <div>
-      <div className="admin-content-text">تفاصيل الطلب رقم#55</div>
+      <div className="admin-content-text">
+        {cartItems && cartItems.length > 0
+          ? `Order details No ${cartItems[0]._id}`
+          : "No order details available"}
+      </div>
       {loading ? (
         <Spinner animation="border" variant="primary" />
       ) : (
@@ -31,7 +35,7 @@ const AdminOrderDetalis = () => {
 
       <Row className="justify-content-center mt-4 user-data">
         <Col xs="12" className=" d-flex">
-          <div className="admin-content-text py-2">تفاصيل العميل</div>
+          <div className="admin-content-text py-2">Customer Details</div>
         </Col>
         <Col xs="12" className="d-flex">
           <div
@@ -41,7 +45,7 @@ const AdminOrderDetalis = () => {
               fontSize: "16px",
             }}
           >
-            الاسم:
+            Name :
           </div>
 
           <div
@@ -64,7 +68,7 @@ const AdminOrderDetalis = () => {
               fontSize: "16px",
             }}
           >
-            رقم الهاتف:
+            Phone number :
           </div>
 
           <div
@@ -75,7 +79,7 @@ const AdminOrderDetalis = () => {
             }}
             className="mx-2"
           >
-            {orderData ? (orderData.user ? orderData.user.phone : "") : ""}
+            {orderData ? orderData.user?.phone : ""}
           </div>
         </Col>
 
@@ -87,7 +91,7 @@ const AdminOrderDetalis = () => {
               fontSize: "16px",
             }}
           >
-            الايميل:
+            Email :
           </div>
 
           <div
@@ -110,7 +114,7 @@ const AdminOrderDetalis = () => {
               fontSize: "16px",
             }}
           >
-            حالة الدفع:
+            Payment status :
           </div>
 
           <div
@@ -121,7 +125,7 @@ const AdminOrderDetalis = () => {
             }}
             className="mx-2"
           >
-            {orderData ? (orderData.isPaid ? "تم الدفع" : "لم يتم الدفع") : ""}
+            {orderData ? (orderData.isPaid ? "Done" : "Not done") : ""}
           </div>
         </Col>
         <Col xs="12" className="d-flex">
@@ -132,7 +136,7 @@ const AdminOrderDetalis = () => {
               fontSize: "16px",
             }}
           >
-            حالة التوصيل:
+            Delivery status :
           </div>
 
           <div
@@ -143,11 +147,7 @@ const AdminOrderDetalis = () => {
             }}
             className="mx-2"
           >
-            {orderData
-              ? orderData.isDeliverd
-                ? "تم التوصيل"
-                : "لم يتم التوصيل"
-              : ""}
+            {orderData ? (orderData.isDeliverd ? "Done" : "Not done") : ""}
           </div>
         </Col>
         <Col xs="12" className="d-flex">
@@ -158,7 +158,7 @@ const AdminOrderDetalis = () => {
               fontSize: "16px",
             }}
           >
-            العنوان :{" "}
+            Address :{" "}
           </div>
 
           <div
@@ -171,7 +171,7 @@ const AdminOrderDetalis = () => {
           >
             {orderData && orderData.shippingAddress
               ? orderData.shippingAddress.details
-              : "ليس هناك عنوان"}
+              : "There is no address"}
           </div>
         </Col>
         <Col xs="12" className="d-flex">
@@ -182,7 +182,7 @@ const AdminOrderDetalis = () => {
               fontSize: "16px",
             }}
           >
-            الهاتف :{" "}
+            shipping address phone :
           </div>
 
           <div
@@ -195,7 +195,7 @@ const AdminOrderDetalis = () => {
           >
             {orderData && orderData.shippingAddress
               ? orderData.shippingAddress.phone
-              : "ليس هناك هاتف"}
+              : "There is no phone"}
           </div>
         </Col>
         {/* <div className=" d-inline px-4 border text-center pt-2">
@@ -209,12 +209,12 @@ const AdminOrderDetalis = () => {
               onChange={handlePay}
               className="select input-form-area mt-1  text-center w-50"
             >
-              <option value="0">الدفع</option>
-              <option value="true">تم</option>
-              <option value="false">لم يتم</option>
+              <option value="0">Payment</option>
+              <option value="true">Done</option>
+              <option value="false">Not done</option>
             </select>
             <button onClick={changePay} className="btn-a px-2 d-inline mx-1 ">
-              حفظ{" "}
+              Save
             </button>
           </div>
           <div>
@@ -224,15 +224,15 @@ const AdminOrderDetalis = () => {
               id="deliver"
               className="select input-form-area mt-1  text-center  w-50"
             >
-              <option value="0">التوصيل</option>
-              <option value="true">تم</option>
-              <option value="false">لم يتم</option>
+              <option value="0">Delivery</option>
+              <option value="true">Done</option>
+              <option value="false">Not done</option>
             </select>
             <button
               onClick={changeDelivery}
               className="btn-a px-2 d-inline mx-1 "
             >
-              حفظ{" "}
+              Save
             </button>
           </div>
         </div>

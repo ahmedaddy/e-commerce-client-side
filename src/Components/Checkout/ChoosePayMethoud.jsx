@@ -36,19 +36,27 @@ const ChoosePayMethoud = () => {
     //   return;
     // }
     if (type === "CASH") {
-      handleCreateOrderCash();
+      if (addressDetail === "") {
+        notify("Please write the address", "warn");
+        return;
+      } else if (phone === "") {
+        notify("Please enter your phone number", "warn");
+        return;
+      } else {
+        handleCreateOrderCash();
+      }
     } else if (type === "CARD") {
-      handleCreateOrderCard();
+      if (addressDetail === "") {
+        notify("Please write the address", "warn");
+        return;
+      } else if (phone === "") {
+        notify("Please enter your phone number", "warn");
+        return;
+      } else {
+        handleCreateOrderCard();
+      }
     } else {
       notify("Please choose a payment method first.", "warn");
-      return;
-    }
-    if (addressDetail === "") {
-      notify("Please write the address", "warn");
-      return;
-    }
-    if (phone === "") {
-      notify("Please enter your phone number", "warn");
       return;
     }
   };
@@ -64,7 +72,7 @@ const ChoosePayMethoud = () => {
 
   return (
     <div>
-      <div className="admin-content-text pt-5">اختر طريقة الدفع</div>
+      <div className="admin-content-text pt-5">Choose payment method</div>
       <div className="user-address-card my-3 px-3">
         <Row className="d-flex justify-content-between ">
           <Col xs="12" className="my-4">
@@ -108,7 +116,7 @@ const ChoosePayMethoud = () => {
           <input
             className="user-input my-3 pe-3"
             type="text"
-            placeholder="أدخل عنوانك"
+            placeholder="Enter your address"
             minLength={10}
             value={addressDetail}
             onChange={onChangeDetail}
@@ -117,7 +125,7 @@ const ChoosePayMethoud = () => {
           <input
             className="user-input my-3 pe-3"
             type="number"
-            placeholder="أدخل رقم هاتفك"
+            placeholder="Enter your phone number"
             minLength={10}
             value={phone}
             onChange={onChangePhone}
@@ -126,7 +134,7 @@ const ChoosePayMethoud = () => {
         </Col>
         <Col xs="12" className="d-flex justify-content-end">
           <div className="product-price d-inline   border">
-            Dirham
+            Dirham :{" "}
             {totalCartPriceAfterDiscount
               ? totalCartPriceAfterDiscount
               : totalCartPrice}

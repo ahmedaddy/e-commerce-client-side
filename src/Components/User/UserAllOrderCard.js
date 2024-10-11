@@ -13,9 +13,10 @@ const UserAllOrderCard = ({ item }) => {
           <Link
             to={`/products/${item.product?._id}`}
             style={{ textDecoration: "none" }}
+            className="m-auto"
           >
             <img
-              width="93px"
+              width="fit-content"
               height="120px"
               src={productURL + item.product?.imageCover}
               alt=""
@@ -27,15 +28,21 @@ const UserAllOrderCard = ({ item }) => {
           {/* <div className="d-inline pt-2 cat-rate me-2">4.5</div>
           <div className="rate-count d-inline p-1 pt-2">(160 تقييم)</div> */}
           <div className="mt-3 d-flex align-items-center">
-            <div className="cat-text  d-inline">اللون :</div>
-            <div
-              className="cat-text me-2"
-              style={{
-                backgroundColor: item.color,
-                height: `30px`,
-                width: `30px`,
-              }}
-            ></div>
+            {item.color ? (
+              <>
+                <div className="cat-text  d-inline">Color :</div>
+                <div
+                  className="cat-text me-2"
+                  style={{
+                    backgroundColor: item.color,
+                    height: `30px`,
+                    width: `30px`,
+                  }}
+                ></div>
+              </>
+            ) : (
+              ""
+            )}
             {/* <input
               className="mx-2 "
               type="number"

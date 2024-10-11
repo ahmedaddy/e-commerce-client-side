@@ -18,11 +18,11 @@ const AdminBrandCard = ({ brand }) => {
         <Modal.Header>
           <Modal.Title>
             {" "}
-            <div className="font">تاكيد الحذف</div>
+            <div className="font">Confirm deletion</div>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className="font">هل انتا متاكد من عملية الحذف للماركة</div>
+          <div className="font">Are you sure about the deletion process?</div>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -30,14 +30,14 @@ const AdminBrandCard = ({ brand }) => {
             variant="font "
             onClick={handleClose}
           >
-            تراجع
+            No
           </Button>
           <Button
             className="font bg-danger btn btn-danger"
             variant="font "
             onClick={handelDelete}
           >
-            حذف
+            Delete
           </Button>
         </Modal.Footer>
       </Modal>
@@ -72,7 +72,7 @@ const AdminBrandCard = ({ brand }) => {
                 height="17px"
                 width="15px"
               />
-              <p className="item-delete-edit"> ازاله</p>
+              <p className="item-delete-edit"> remove</p>
             </div>
           </div>
         </Col>

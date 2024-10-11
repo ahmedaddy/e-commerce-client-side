@@ -11,9 +11,9 @@ const AdminAddCategory = () => {
   return (
     <div>
       <Row className="justify-content-start ">
-        <div className="admin-content-text pb-4">اضافه تصنيف جديد</div>
+        <div className="admin-content-text pb-4">Add new category</div>
         <Col sm="8">
-          <div className="text-form pb-2">صوره التصنيف</div>
+          <div className="text-form pb-2">Category Image</div>
           <div>
             <label for="upload-photo">
               <img
@@ -37,14 +37,14 @@ const AdminAddCategory = () => {
             onChange={onChangeName}
             type="text"
             className="input-form d-block mt-3 px-3"
-            placeholder="اسم التصنيف"
+            placeholder="Category name"
           />
         </Col>
       </Row>
       <Row>
         <Col sm="8" className="d-flex justify-content-end ">
           <button onClick={handleSubmit} className="btn-save d-inline mt-2 ">
-            حفظ التعديلات
+            Save
           </button>
         </Col>
       </Row>
@@ -55,7 +55,7 @@ const AdminAddCategory = () => {
               return <AdminCategoryCard key={index} category={item} />;
             })
           ) : (
-            <h6>لا توجد تصنيفات حتى الان</h6>
+            <h6>There are no categories yet.</h6>
           )}
         </Col>
       </Row>

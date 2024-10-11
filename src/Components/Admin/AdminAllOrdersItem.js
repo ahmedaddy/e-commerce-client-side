@@ -23,20 +23,19 @@ const AdminAllOrdersItem = ({ orderItem }) => {
           <Row className="justify-content-between">
             <Col sm="12" className=" d-flex flex-row justify-content-between">
               <div className="d-inline pt-2 cat-text">
-                طلب رقم #{orderItem.id}
+                order number #{orderItem.id}
               </div>
             </Col>
           </Row>
           <Row className="justify-content-center mt-2">
             <Col sm="12" className=" d-flex flex-row justify-content-start">
               <div className="d-inline pt-2 cat-title">
-                طلب من.. {orderItem.user.name || ""}
+                order from.. {orderItem.user.name || ""}
               </div>
               <div
                 style={{ color: "black" }}
                 className="d-inline pt-2 cat-rate me-2"
               >
-                {" "}
                 {orderItem.user.email || ""}
               </div>
             </Col>
@@ -47,37 +46,37 @@ const AdminAllOrdersItem = ({ orderItem }) => {
               <div>
                 <div style={{ color: "black" }} className="d-inline">
                   {" "}
-                  التوصيل :
+                  Delivery :
                 </div>
                 <div className="d-inline mx-2 stat">
-                  {orderItem.isDelivered === true ? "تم التوصيل" : "لم يتم "}
+                  {orderItem.isDelivered === true ? "Done" : "Not done "}
                 </div>
               </div>
               <div>
                 <div style={{ color: "black" }} className="d-inline">
                   {" "}
-                  الدفع :
+                  Payment :
                 </div>
                 <div className="d-inline mx-2 stat">
-                  {orderItem.isPaid === true ? "تم الدفع" : "لم يتم "}
+                  {orderItem.isPaid === true ? "Done" : "Not done "}
                 </div>
               </div>
 
               <div>
                 <div style={{ color: "black" }} className="d-inline">
-                  طريقة الدفع :
+                  payment method :
                 </div>
                 <div className="d-inline mx-2 stat">
                   {orderItem.paymentMethodType === "cash"
-                    ? "كاش"
-                    : "بطاقة ائتمانية"}
+                    ? "cash"
+                    : "Credit card"}
                 </div>
               </div>
             </Col>
             <Col xs="6" className="d-flex justify-content-end">
               <div>
                 <div className="barnd-text">
-                  {orderItem.totalOrderPrice || 0} درهم
+                  {orderItem.totalOrderPrice || 0} Dirham
                 </div>
               </div>
             </Col>

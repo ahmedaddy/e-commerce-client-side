@@ -11,14 +11,14 @@ const AdminAllOrders = () => {
   // console.log(pagination);
   return (
     <div>
-      <div className="admin-content-text">ادارة جميع الطلبات</div>
+      <div className="admin-content-text">Manage all orders</div>
       <Row className="justify-content-start">
         {data ? (
           data.map((item, index) => {
             return <AdminAllOrdersItem orderItem={item} />;
           })
         ) : (
-          <h2>ليس هناك أي طلب</h2>
+          <h2>There is no order.</h2>
         )}
       </Row>
     </div>

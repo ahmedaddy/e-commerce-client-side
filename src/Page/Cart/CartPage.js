@@ -20,7 +20,7 @@ const CartPage = () => {
   return (
     <Container style={{ minHeight: "670px" }}>
       <Row>
-        <div className="cart-title mt-4">عربة التسوق</div>
+        <div className="cart-title mt-4">shopping cart</div>
       </Row>
       <Row className="d-flex justify-content-center">
         <Col xs="12" md="9">
@@ -29,11 +29,11 @@ const CartPage = () => {
               return <CartItem key={index} item={item} />;
             })
           ) : (
-            <h6 className="py-2">لا توجد منتجات فى العربة</h6>
+            <h6 className="py-2">There are no products in the cart.</h6>
           )}
         </Col>
 
-        <Col xs="6" md="3">
+        <Col xs="12" md="3">
           <CartCheckout
             cartItems={cartItems}
             couponName={couponName}

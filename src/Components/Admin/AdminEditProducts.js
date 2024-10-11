@@ -15,9 +15,7 @@ import ImageUploading from "react-images-uploading";
 const AdminEditProducts = () => {
   const { id } = useParams();
 
-  // const [CatID, BrandID, onChangeDesName, onChangeQty, onChangeColor, onChangePriceAfter, onChangePriceBefor, onChangeProdName, showColor, category, brand, priceAftr, images, setImages, onSelect, onRemove, options, handelChangeComplete, removeColor, onSeletCategory, handelSubmit, onSeletBrand, colors, priceBefore, qty, prodDescription, prodName] =
-  //     AdminEditProductsHook(id);
-
+  // Uncommented variables from hook for better visibility
   const [
     category,
     brand,
@@ -51,33 +49,33 @@ const AdminEditProducts = () => {
     onSubmit,
     removeColor,
   ] = EditProductsHook(id);
-  // console.log(images);
-  // const updatedImages = Array.isArray(images)
-  //   ? images.map((item) => {
-  //       return typeof item === "string" ? productURL + item : item;
-  //     })
-  //   : [];
-  // console.log(selectedSubCatOptions);
 
   return (
     <div>
       <Row className="justify-content-start ">
-        <div className="admin-content-text pb-4"> تعديل المنتج -{title}</div>
+        <div className="admin-content-text pb-4">Edit Product - {title}</div>
         <Col sm="8">
-          <div className="text-form pb-2"> صور المنتج</div>
+          <div className="text-form pb-2">Product Images</div>
 
+          {/* Display existing images */}
           {images &&
             images.map((image) => {
               return <img src={productURL + image} alt="" width="100" />;
             })}
-          {/* <MultiImageInput
+
+          {/* Uncomment for using MultiImageInput */}
+          {/* 
+          <MultiImageInput
             images={images}
             setImages={setImages}
             theme={"light"}
             allowCrop={false}
             max={4}
           /> */}
-          {/* <ImageUploading
+
+          {/* Uncomment for using ImageUploading */}
+          {/* 
+          <ImageUploading
             multiple
             value={images}
             onChange={onChangeImages}
@@ -92,11 +90,9 @@ const AdminEditProducts = () => {
               isDragging,
               dragProps,
             }) => (
-              // write your building UI
               <div className="upload__image-wrapper">
                 <button
                   className="btn btn-success"
-                  // style={isDragging ? { color: "red" } : undefined}
                   onClick={onImageUpload}
                   {...dragProps}>
                   Click or Drop here
@@ -133,34 +129,34 @@ const AdminEditProducts = () => {
             onChange={onChangeTitle}
             type="text"
             className="input-form d-block mt-3 px-3"
-            placeholder="اسم المنتج"
+            placeholder="Product Name"
           />
           <textarea
             className="input-form-area p-2 mt-3"
             rows="4"
             cols="50"
-            placeholder="وصف المنتج"
+            placeholder="Product Description"
             value={description}
             onChange={onChangeDescription}
           />
           <input
             type="number"
             className="input-form d-block mt-3 px-3"
-            placeholder="السعر قبل الخصم"
+            placeholder="Price Before Discount"
             value={price}
             onChange={onChangePrice}
           />
           <input
             type="number"
             className="input-form d-block mt-3 px-3"
-            placeholder="السعر بعد الخصم"
+            placeholder="Price After Discount"
             value={priceAfterDiscount}
             onChange={onChangePriceAfterDiscount}
           />
           <input
             type="number"
             className="input-form d-block mt-3 px-3"
-            placeholder="الكمية المتاحة"
+            placeholder="Available Quantity"
             value={qty}
             onChange={onChangeQuantity}
           />
@@ -168,8 +164,9 @@ const AdminEditProducts = () => {
             name="cat"
             value={catId}
             onChange={onSeletCategory}
-            className="select input-form-area mt-3 px-2 ">
-            <option value="0">التصنيف الرئيسي</option>
+            className="select input-form-area mt-3 px-2 "
+          >
+            <option value="0">Main Category</option>
             {category.data
               ? category.data.map((item) => {
                   return <option value={item._id}>{item.name}</option>;
@@ -179,33 +176,33 @@ const AdminEditProducts = () => {
 
           <Multiselect
             className="mt-2 text-end"
-            placeholder="التصنيف الفرعي"
+            placeholder="Subcategory"
             options={subCatOptions}
             onSelect={onSelect}
             onRemove={onRemove}
             displayValue="name"
-            style={{ color: "red" }}
-            />
-            <h4>
-              التصنيفات الفرعية المحددة سابقا:
-              {45 &&
-                selectedSubCatOptions.map((item) => {
-                  return <>{item}</>;
-                })}
-            </h4>
+          />
+          <h4>
+            Previously selected subcategories:
+            {selectedSubCatOptions &&
+              selectedSubCatOptions.map((item) => {
+                return <>{item}</>;
+              })}
+          </h4>
           <select
             name="brand"
             value={brandId}
             onChange={onSelectBrand}
-            className="select input-form-area mt-3 px-2 ">
-            <option value="0">اختر ماركة</option>
+            className="select input-form-area mt-3 px-2 "
+          >
+            <option value="0">Select a Brand</option>
             {brand.data
               ? brand.data.map((item) => {
                   return <option value={item._id}>{item.name}</option>;
                 })
               : null}
           </select>
-          <div className="text-form mt-3 "> الالوان المتاحه للمنتج</div>
+          <div className="text-form mt-3 ">Available Colors</div>
           <div className="mt-1 d-flex">
             {colors.length >= 1
               ? colors.map((color, index) => {
@@ -213,8 +210,9 @@ const AdminEditProducts = () => {
                     <div
                       key={index}
                       onClick={() => removeColor(color)}
-                      className="color ms-2 border  mt-1"
-                      style={{ backgroundColor: color }}></div>
+                      className="color ms-2 border mt-1"
+                      style={{ backgroundColor: color }}
+                    ></div>
                   );
                 })
               : null}
@@ -235,8 +233,8 @@ const AdminEditProducts = () => {
       </Row>
       <Row>
         <Col sm="8" className="d-flex justify-content-end ">
-          <button onClick={onSubmit} className="btn-save d-inline mt-2 ">
-            حفظ التعديلات
+          <button onClick={onSubmit} className="btn-save d-inline mt-2">
+            Save Changes
           </button>
         </Col>
       </Row>

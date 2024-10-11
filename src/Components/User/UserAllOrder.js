@@ -5,10 +5,10 @@ import UserGetAllOrders from "../../hook/user/user-get-all-orders";
 
 const UserAllOrder = () => {
   const [userName, data] = UserGetAllOrders();
-  console.log(userName);
+  // console.log(userName);
   return (
     <div>
-      <div className="admin-content-text pb-4">اهلا {userName}</div>
+      <div className="admin-content-text pb-4">Hello {userName}</div>
       <Row className="justify-content-between">
         {data &&
           data.map((item) => {

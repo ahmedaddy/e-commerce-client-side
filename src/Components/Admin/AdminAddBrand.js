@@ -12,9 +12,9 @@ const AdminAddBrand = () => {
   return (
     <div>
       <Row className="justify-content-start ">
-        <div className="admin-content-text pb-4">اضف ماركه جديده</div>
+        <div className="admin-content-text pb-4">Add a new brand</div>
         <Col sm="8">
-          <div className="text-form pb-2">صوره الماركه</div>
+          <div className="text-form pb-2">Brand image</div>
           <div>
             <label for="upload-photo">
               <img
@@ -38,14 +38,14 @@ const AdminAddBrand = () => {
             onChange={onChangeName}
             type="text"
             className="input-form d-block mt-3 px-3"
-            placeholder="اسم الماركه"
+            placeholder="Brand Name"
           />
         </Col>
       </Row>
       <Row>
         <Col sm="8" className="d-flex justify-content-end ">
           <button onClick={handleSubmit} className="btn-save d-inline mt-2 ">
-            حفظ
+            Save
           </button>
         </Col>
       </Row>
@@ -56,7 +56,7 @@ const AdminAddBrand = () => {
               return <AdminBrandCard key={index} brand={item} />;
             })
           ) : (
-            <h6>لا توجد ماركات حتى الان</h6>
+            <h6>No brands yet</h6>
           )}
         </Col>
       </Row>

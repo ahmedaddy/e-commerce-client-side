@@ -17,11 +17,12 @@ const CartItem = ({ item }) => {
   if (item.product === null) {
     return <div></div>;
   }
+  console.log(item);
 
   return (
     <div className="cart-item-body my-2 d-flex px-2">
       <Row
-        className="w-100"
+        className="w-100 m-auto"
         style={{
           padding: "10px",
           borderEadius: "7px",
@@ -41,14 +42,16 @@ const CartItem = ({ item }) => {
           <div className="w-100 ">
             <Row className="justify-content-between">
               <Col sm="12" className=" d-flex flex-row justify-content-between">
-                <div className="d-inline pt-2 cat-text">الالكترونيات</div>
+                <div className="d-inline pt-2 cat-text">
+                  {item.product?.category?.name}
+                </div>
                 <div
                   onClick={deleteCartItem}
                   className="d-flex pt-2 "
                   style={{ cursor: "pointer" }}
                 >
                   <img src={deleteicon} alt="" width="20px" height="24px" />
-                  <div className="cat-text d-inline me-2">ازاله</div>
+                  <div className="cat-text d-inline me-2">Delete</div>
                 </div>
               </Col>
             </Row>
@@ -64,7 +67,7 @@ const CartItem = ({ item }) => {
             </Row>
             <Row>
               <Col sm="12" className="mt-1">
-                <div className="cat-text d-inline">الماركة :</div>
+                <div className="cat-text d-inline">Brand :</div>
                 <div className="barnd-text d-inline mx-1">
                   {item.product.brand ? item.product.brand.name : ""}{" "}
                 </div>
@@ -86,7 +89,7 @@ const CartItem = ({ item }) => {
                 className=" d-flex flex-row justify-content-between align-items-center"
               >
                 <div className="d-inline pt-2 d-flex">
-                  <div className="cat-text  d-inline">الكميه</div>
+                  <div className="cat-text  d-inline">Quantity</div>
                   <input
                     value={quantity}
                     onChange={onChangeQuantity}
@@ -99,7 +102,7 @@ const CartItem = ({ item }) => {
                     onClick={handleUpdateQuantity}
                     className="btn btn-dark"
                   >
-                    تطبيق
+                    Apply
                   </Button>
                 </div>
               </Col>
@@ -108,8 +111,8 @@ const CartItem = ({ item }) => {
                 md="6"
                 className=" d-flex flex-row justify-content-between align-items-center"
               >
-                <span className="pt-2">الكمية : {item.quantity}</span>
-                <div className="d-inline barnd-text">{item.price}درهم</div>
+                <span className="pt-2">Quantity : {item.quantity}</span>
+                <div className="d-inline barnd-text">{item.price}Dirham</div>
               </Col>
             </Row>
           </div>

@@ -71,7 +71,7 @@ const NavBarLogin = () => {
               value={word}
               onChange={OnChangeSearch}
               type="search"
-              placeholder="ابحث..."
+              placeholder="Search..."
               className="w-100 text-center "
               aria-label="Search"
               autoComplete="off"
@@ -151,6 +151,7 @@ const NavBarLogin = () => {
                 <Nav.Link
                   href="/login"
                   className="nav-text d-flex m-0 align-items-center justify-content-center flex-column"
+                  style={{ width: "80px" }}
                 >
                   <CgProfile className="login-img" />
                   <p style={{ color: "white" }} className="m-0">

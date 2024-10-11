@@ -28,10 +28,10 @@ const CartCheckout = ({
             value={couponName}
             onChange={handleCouponInput}
             className="copon-input d-inline text-center "
-            placeholder="كود الخصم"
+            placeholder="Discount code"
           />
           <button onClick={handleSubmitCoupon} className="copon-btn d-inline ">
-            تطبيق
+            Apply
           </button>
         </div>
         {/* <div className="product-price d-inline w-100 my-3  border">
@@ -42,17 +42,17 @@ const CartCheckout = ({
           درهم
         </div> */}
         <div className="product-price d-inline w-100 my-3  border">
-          <span>التمن قبل الخصم : </span>
+          <span>Price before discount : </span>
           {totalCartPrice}
-          درهم
+          Dirham
         </div>
         {totalCartPriceAfterDiscount === "" ? (
           " "
         ) : (
           <div className="product-price d-inline w-100 mb-3 border">
-            <span>التمن بعد الخصم : </span>
+            <span>Price after discount : </span>
             {totalCartPriceAfterDiscount}
-            درهم
+            Dirham
           </div>
         )}
         <Link
@@ -64,7 +64,7 @@ const CartCheckout = ({
             className="product-cart-add w-100 px-2"
             onClick={handelCheckout}
           >
-            اتمام الشراء
+            Complete the purchase
           </button>
         </Link>
 
@@ -72,7 +72,7 @@ const CartCheckout = ({
           onClick={clearCart}
           className="product-cart-add w-100 px-2 mt-3"
         >
-          مسح العربة
+          Clear the cart
         </button>
       </Col>
     </Row>

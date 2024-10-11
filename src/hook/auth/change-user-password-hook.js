@@ -7,15 +7,15 @@ const ChangeUserPasswordHook = () => {
 
   const res = useSelector((state) => state.authReducer.userChangedPassword);
 
-  const [currentPassword, setCurrentPassword] = useState("");
+  // const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(true);
 
-  const onChangeِCurrentPassword = (event) => {
-    event.persist();
-    setCurrentPassword(event.target.value);
-  };
+  // const onChangeِCurrentPassword = (event) => {
+  //   event.persist();
+  //   setCurrentPassword(event.target.value);
+  // };
 
   const onChangePassword = (event) => {
     event.persist();
@@ -27,10 +27,10 @@ const ChangeUserPasswordHook = () => {
   };
 
   const changePassword = async () => {
-    if (currentPassword === "") {
-      notify("Please enter your old password.", "warn");
-      return;
-    }
+    // if (currentPassword === "") {
+    //   notify("Please enter your old password.", "warn");
+    //   return;
+    // }
     if (password === "") {
       notify("Please enter a new password.", "warn");
       return;
@@ -46,7 +46,7 @@ const ChangeUserPasswordHook = () => {
     setLoading(true);
     await dispatch(
       updateUserPassword({
-        currentPassword: currentPassword,
+        // currentPassword: currentPassword,
         password: password,
         passwordConfirm: confirmPassword,
       })
@@ -57,9 +57,14 @@ const ChangeUserPasswordHook = () => {
   useEffect(() => {
     if (!loading) {
       if (res) {
-        console.log(res);
-        if (res.status && res.status === 401)
+        // console.log(res);
+        if (res.status && res.status === 401) {
+          localStorage.removeItem("user");
           notify("Log in again", "warn");
+          setTimeout(() => {
+            window.location.reload(false);
+          }, 1000);
+        }
       }
       if (res.token) {
         notify("Password changed successfully", "success");
@@ -70,13 +75,14 @@ const ChangeUserPasswordHook = () => {
   // console.log(res);
 
   return [
-    currentPassword,
+    // currentPassword,
     password,
     confirmPassword,
-    onChangeِCurrentPassword,
+    // onChangeِCurrentPassword,
     onChangePassword,
     onChangeConfirmPassword,
     changePassword,
+    loading,
   ];
 };
 

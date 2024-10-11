@@ -10,7 +10,7 @@ const useHomeBrand = () => {
     dispatch(getAllBrands(8));
   }, [dispatch]);
 
-  const brand = useSelector((state) => state.allBrands.brand);
+  const brand = useSelector((state) => state.allBrands?.brand);
   const loading = useSelector((state) => state.allBrands.loading);
 
   return [brand, loading];

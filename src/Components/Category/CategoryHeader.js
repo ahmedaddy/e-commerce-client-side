@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import AllCategoryHook from "../../hook/category/all-category-page-hook";
 const CategoryHeader = () => {
   const [loading, category, pageCount, getPage] = AllCategoryHook();
@@ -27,7 +27,7 @@ const CategoryHeader = () => {
                 </div>
               ))
             ) : (
-              <p>Loading...</p>
+              <Spinner animation="border" variant="primary" />
             )}
             <Link to="/allcategory" style={{ textDecoration: "none" }}>
               <div className="cat-text-header">more</div>
